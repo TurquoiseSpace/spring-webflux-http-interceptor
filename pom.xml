@@ -4,7 +4,7 @@
 
 	<modelVersion>4.0.0</modelVersion>
 
-	<groupId>space.turquoise</groupId>
+	<groupId>TurquoiseSpace</groupId>
 	<artifactId>spring-webflux-http-interceptor</artifactId>
 	<version>0.0.2</version>
 
@@ -77,7 +77,27 @@
 		<repository>
 			<id>github</id>
 			<name>GitHub Turquoise Space Apache Maven Packages</name>
-			<url>https://maven.pkg.github.com/TurquoiseSpace/spring-webflux-http-interceptor</url>
+
+			<!--
+				[ERROR] Failed to execute goal org.apache.maven.plugins:maven-deploy-plugin:2.7:deploy (default-deploy)
+				on project spring-webflux-http-interceptor:
+				Failed to deploy artifacts:
+				Could not transfer artifact TurquoiseSpace:spring-webflux-http-interceptor:jar:0.0.2 
+				from/to github (https://maven.pkg.github.com):
+				Transfer failed for https://maven.pkg.github.com/TurquoiseSpace/spring-webflux-http-interceptor/0.0.2/spring-webflux-http-interceptor-0.0.2.jar 
+				401 Unauthorized -> [Help 1]
+			-->
+			<!-- <url>https://maven.pkg.github.com</url> -->
+
+			<!-- [ERROR] Failed to execute goal org.apache.maven.plugins:maven-deploy-plugin:2.7:deploy (default-deploy)
+				on project spring-webflux-http-interceptor:
+				Failed to deploy artifacts: 
+				Could not transfer artifact TurquoiseSpace:spring-webflux-http-interceptor:jar:0.0.2 
+				from/to github (https://maven.pkg.github.com/TurquoiseSpace/spring-webflux-http-interceptor): 
+				Transfer failed for https://maven.pkg.github.com/TurquoiseSpace/spring-webflux-http-interceptor/TurquoiseSpace/spring-webflux-http-interceptor/0.0.2/spring-webflux-http-interceptor-0.0.2.jar 
+				401 Unauthorized -> [Help 1]
+			-->
+			<!-- <url>https://maven.pkg.github.com/TurquoiseSpace/spring-webflux-http-interceptor</url> -->
 		</repository>
 	</distributionManagement>
 
