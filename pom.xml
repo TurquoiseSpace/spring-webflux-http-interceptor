@@ -9,7 +9,7 @@
 	<version>0.0.1</version>
 
 	<name>Spring Webflux HTTP Interceptor</name>
-	<description>Persist &amp; Report Module</description>
+	<description>Persist Module</description>
 
 	<properties>
 		<lombok.version>1.18.10</lombok.version>
