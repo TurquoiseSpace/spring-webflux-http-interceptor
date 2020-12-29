@@ -71,10 +71,12 @@
 	</build>
 
 	<!-- https://docs.github.com/en/free-pro-team@latest/packages/guides/configuring-apache-maven-for-use-with-github-packages -->
+	<!-- https://docs.github.com/en/free-pro-team@latest/packages/learn-github-packages/about-github-packages#authenticating-to-github-packages -->
+	<!-- https://docs.github.com/en/free-pro-team@latest/packages/guides/package-client-guides-for-github-packages -->
 	<distributionManagement>
 		<repository>
 			<id>github</id>
-			<name>GitHub TurquoiseSpace Apache Maven Packages</name>
+			<name>GitHub Turquoise Space Apache Maven Packages</name>
 			<url>https://maven.pkg.github.com/TurquoiseSpace/spring-webflux-http-interceptor</url>
 		</repository>
 	</distributionManagement>
