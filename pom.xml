@@ -70,4 +70,13 @@
 		</plugins>
 	</build>
 
+	<!-- https://docs.github.com/en/free-pro-team@latest/packages/guides/configuring-apache-maven-for-use-with-github-packages -->
+	<distributionManagement>
+		<repository>
+			<id>github</id>
+			<name>GitHub TurquoiseSpace Apache Maven Packages</name>
+			<url>https://maven.pkg.github.com/TurquoiseSpace/spring-webflux-http-interceptor</url>
+		</repository>
+	</distributionManagement>
+
 </project>
