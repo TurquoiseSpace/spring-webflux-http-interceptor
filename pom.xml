@@ -6,7 +6,7 @@
 
 	<groupId>space.turquoise</groupId>
 	<artifactId>spring-webflux-http-interceptor</artifactId>
-	<version>0.0.1</version>
+	<version>0.0.2</version>
 
 	<name>Spring Webflux HTTP Interceptor</name>
 	<description>Persist Module</description>
