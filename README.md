@@ -43,7 +43,33 @@ Add (class level) annotation to java bean configuration class of the MongoDB Con
 
 
 
-### Collaborate - Developer Setup ###
+### How to verify if it working ###
+
+
+After adding the above dependency and embedding the specified changes, hit an API of your application
+
+query MongoDB using a client of your choice (CLI / Studio3T / Robo3T), for documents in the below collections
+
+	applicationcontext
+	
+	informationexchange
+
+
+
+### Up Next - Improvements to be Picked ###
+
+
+Persist
+
+- Request Body (Issue : One subscriber only)
+
+- Response Body (Hidden : within DataBufferFactory.java)
+
+- Multipart Data
+
+
+
+### Contribute (Collaborate) - Developer Setup ###
 
 
 Pre-requisite Tools (Softwares)
@@ -221,5 +247,6 @@ Publish
 	mvn nexus-staging:release --settings /home/mafia/.m2/setting.xml --global-settings /space/tools/apache-maven-3.6.3/conf/settings.xml -DstagingRepositoryId=ossrh
 
 	mvn deploy --settings /home/mafia/.m2/setting.xml --global-settings /space/tools/apache-maven-3.6.3/conf/settings.xml
+
 
 
