@@ -31,7 +31,7 @@ public class InformationExchangeRepoAsyncImpl implements InformationExchangeRepo
 					boolean wasAcknowledged = updateResult.wasAcknowledged();
 					boolean isModifiedCountAvailable = updateResult.isModifiedCountAvailable();
 					long modifiedCount = updateResult.getModifiedCount();
-					log.info("update result -> (identifier) {} (attributeName) {} (matchedCount) {} (wasAcknowledged) {} (isModifiedCountAvailable) {} (modifiedCount) {}",
+					log.debug("update result -> (identifier) {} (attributeName) {} (matchedCount) {} (wasAcknowledged) {} (isModifiedCountAvailable) {} (modifiedCount) {}",
 							identifier, attributeName, matchedCount, wasAcknowledged, isModifiedCountAvailable, modifiedCount);
 					return Mono.just(true);
 				});

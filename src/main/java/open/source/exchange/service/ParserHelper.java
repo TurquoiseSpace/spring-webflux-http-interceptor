@@ -221,7 +221,7 @@ public class ParserHelper {
 					exApplicationContext.setDocumentId(documentId);
 					monoCall = exApplicationContextRepoAsync.insert(exApplicationContext)
 						.flatMap(persistedExApplicationContext -> {
-							log.info("persisted -> (exApplicationContext) {}", persistedExApplicationContext);
+							log.debug("persisted -> (exApplicationContext) {}", persistedExApplicationContext);
 							return Mono.just(true);
 						});
 				}

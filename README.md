@@ -38,7 +38,7 @@ Add (class level) annotation to java bean configuration class of the MongoDB Con
 
 	@Configuration
 	@EnableMongoAuditing
-	@EnableReactiveMongoRepositories(value = { "open.source.exchange.repository.asynchronous", "<actual.application.base.package.containg.asynchronous.repositories>" })
+	@EnableReactiveMongoRepositories(value = { "open.source.exchange.repository.asynchronous", "${application.package.containing.asynchronous.repositories}" })
 	public class MongoReactiveConfig { }
 
 

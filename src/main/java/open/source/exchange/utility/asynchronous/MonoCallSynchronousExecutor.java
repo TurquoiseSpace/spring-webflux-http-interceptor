@@ -9,11 +9,25 @@ import reactor.core.publisher.Mono;
 @Log4j2
 public class MonoCallSynchronousExecutor {
 
+	private static final int THRESHOLD_SECONDS = 5;
+
 	private static Thread getHelperThread(Disposable disposable, String descriptor, long perodicCheckMilliSecondsTime) {
 
 		Object requestId = MDC.get("requestId");
 		String id = (null != requestId) ? (String) requestId : "";
 		Thread helperThread = new Thread() {
+
+			private void checkThresholdCrossed(int sleptTimes, long perodicCheckMilliSeconds) {
+
+				int sleptDurationInSeconds = (int) ((perodicCheckMilliSeconds * sleptTimes) / 1000);
+				if (sleptDurationInSeconds > 0 && 0 == sleptDurationInSeconds % THRESHOLD_SECONDS ) {
+					log.warn("{} -> (disposed) {} (eachSleepMilliSecondDuration) {} (sleptTimes) {} (sleptDurationInSeconds) {}",
+							descriptor, false, perodicCheckMilliSeconds, sleptTimes, sleptDurationInSeconds);
+				} else {
+					log.debug("{} -> (disposed) {} (eachSleepMilliSecondDuration) {} (sleptTimes) {}",
+							descriptor, false, perodicCheckMilliSeconds, sleptTimes);
+				}
+			}
 
 			@Override
 			public void run() {
@@ -22,7 +36,6 @@ public class MonoCallSynchronousExecutor {
 				boolean disposed = false;
 				int sleptTimes = 0;
 				while (false == (disposed = disposable.isDisposed())) {
-					log.info("{} -> (disposed) {} (sleptTimes) {}", descriptor, disposed, sleptTimes);
 					try {
 						this.sleep(perodicCheckMilliSecondsTime);
 					} catch (InterruptedException e) {
@@ -30,8 +43,9 @@ public class MonoCallSynchronousExecutor {
 						break;
 					}
 					++sleptTimes;
+					checkThresholdCrossed(sleptTimes, perodicCheckMilliSecondsTime);
 				}
-				log.info("{} -> (disposed) {}", descriptor, disposed);
+				log.debug("{} -> (disposed) {}", descriptor, disposed);
 			}
 
 		};

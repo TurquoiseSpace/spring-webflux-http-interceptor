@@ -57,7 +57,8 @@ public class InformationExchangeService {
 			.flatMap(persistedInformationExchange -> {
 				MDC.put("requestId", requestId);
 				MDC.put("identifier", identifier);
-				log.info("persisted -> (informationExchange) {}", persistedInformationExchange);
+				log.info("created entry of api call -> (requestId) {} (informationExchangeId) {}", requestId, identifier);
+				log.debug("persisted -> (informationExchange) {}", persistedInformationExchange);
 				parserHelper.identifyAndPersist(serverWebExchange, ExchangeInformationType.attributes);
 				parserHelper.identifyAndPersist(serverWebExchange, ExchangeInformationType.logPrefix);
 				parserHelper.identifyAndPersist(serverWebExchange, ExchangeInformationType.notModifiedFlag);
