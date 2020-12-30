@@ -23,7 +23,7 @@ Add jar (ant) or as dependency in pom.xml (maven), to your Java Spring WebFlux, 
 		<dependency>
 			<groupId>com.github.TurquoiseSpace</groupId>
 			<artifactId>spring-webflux-http-interceptor</artifactId>
-			<version>0.0.5</version>
+			<version>0.0.7</version>
 		</dependency>
 	</dependencies>
 
@@ -195,14 +195,14 @@ Sign
 
 	gpg -ab pom.xml
 
-	gpg -ab target/spring-webflux-http-interceptor-0.0.5.jar
+	gpg -ab target/spring-webflux-http-interceptor-0.0.7.jar
 
 
 Verify
 
 	gpg --verify pom.xml.asc
 
-	gpg --verify target/spring-webflux-http-interceptor-0.0.5.jar.asc
+	gpg --verify target/spring-webflux-http-interceptor-0.0.7.jar.asc
 
 
 
