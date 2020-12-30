@@ -20,7 +20,7 @@ public class InformationExchangeRepoAsyncImpl implements InformationExchangeRepo
 
 	public <T> Mono<Boolean> updateAttribute(String identifier, String attributeName, T attributeValue) {
 
-		log.info("update attribute -> (identifier) {} (attributeName) {} (attributeValue) {}", identifier, attributeName, attributeValue);
+		log.debug("update attribute -> (identifier) {} (attributeName) {} (attributeValue) {}", identifier, attributeName, attributeValue);
 		if (null != attributeValue) {
 			Query query = Query.query(Criteria.where("id").is(identifier));
 			Update update = new Update().set(attributeName, attributeValue);

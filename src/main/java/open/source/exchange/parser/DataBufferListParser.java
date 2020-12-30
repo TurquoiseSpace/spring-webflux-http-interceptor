@@ -38,7 +38,7 @@ public class DataBufferListParser {
 			}
 		}
 		String completeDataBufferString = stringBuilder.toString();
-		log.info("got -> (completeDataBufferString) {}", completeDataBufferString);
+		log.debug("got -> (completeDataBufferString) {}", completeDataBufferString);
 		return completeDataBufferString;
 	}
 
