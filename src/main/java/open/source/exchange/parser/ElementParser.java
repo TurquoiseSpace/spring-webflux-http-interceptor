@@ -19,7 +19,7 @@ public class ElementParser {
 
 	public ExElement parse(Element element) {
 
-		log.info("parse -> (element) {}", element);
+		log.debug("parse -> (element) {}", element);
 		ExElement exElement = null;
 
 		if (null != element) {

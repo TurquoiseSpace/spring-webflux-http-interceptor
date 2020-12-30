@@ -97,7 +97,7 @@ public class URIParser {
 
 	public ExURI parse(URI uri) {
 
-		log.info("parse -> (uri) {}", uri);
+		log.debug("parse -> (uri) {}", uri);
 		ExURI exURI = null;
 
 		if (null != uri) {

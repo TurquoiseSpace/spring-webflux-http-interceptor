@@ -21,7 +21,7 @@ public class PrincipalParser {
 
 	public ExPrincipal parse(Principal principal) {
 
-		log.info("parse -> (principal) {}", principal);
+		log.debug("parse -> (principal) {}", principal);
 		ExPrincipal exPrincipal = null;
 
 		if (null != principal) {

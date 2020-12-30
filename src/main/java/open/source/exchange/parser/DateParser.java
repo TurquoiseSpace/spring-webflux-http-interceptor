@@ -26,7 +26,7 @@ public class DateParser {
 
 	public ExDate parse(Date date) {
 
-		log.info("parse -> (date) {}", date);
+		log.debug("parse -> (date) {}", date);
 		ExDate exDate = null;
 
 		if (null != date) {

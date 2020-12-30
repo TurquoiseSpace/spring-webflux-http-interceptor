@@ -24,7 +24,7 @@ public class EnumParser {
 
 	public ExEnum parse(Enum<?> enumeration) {
 
-		log.info("parse -> (enumeration) {}", enumeration);
+		log.debug("parse -> (enumeration) {}", enumeration);
 		ExEnum exEnum = null;
 
 		if (null != enumeration) {

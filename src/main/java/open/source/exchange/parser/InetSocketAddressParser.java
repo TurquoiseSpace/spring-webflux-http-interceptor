@@ -25,7 +25,7 @@ public class InetSocketAddressParser {
 
 	public ExInetSocketAddress parse(InetSocketAddress inetSocketAddress) {
 
-		log.info("parse -> (inetSocketAddress) {}", inetSocketAddress);
+		log.debug("parse -> (inetSocketAddress) {}", inetSocketAddress);
 		ExInetSocketAddress exInetSocketAddress = null;
 
 		if (null != inetSocketAddress) {

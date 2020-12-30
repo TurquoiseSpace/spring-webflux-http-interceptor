@@ -34,6 +34,7 @@ import reactor.core.publisher.Mono;
 @Log4j2
 @Service
 @RequiredArgsConstructor
+@Deprecated
 public class ServerWebExchangeParser {
 
 	@Autowired
@@ -65,13 +66,13 @@ public class ServerWebExchangeParser {
 
 	private Mono<Information> parseAsyncState(ServerWebExchange serverWebExchange, Information information) {
 
-		log.info("parse async state -> (serverWebExchange) {} (information) {}", serverWebExchange, information);
+		log.debug("parse async state -> (serverWebExchange) {} (information) {}", serverWebExchange, information);
 
 		return serverWebExchange.getPrincipal()
 			.flux()
 			.collectList()
 			.flatMap(principalList -> {
-				log.info("got -> (principalList) {}", principalList);
+				log.debug("got -> (principalList) {}", principalList);
 				Principal principal = principalList.isEmpty() ? null : principalList.get(0);
 				ExPrincipal exPrincipal = principalParser.parse(principal);
 				information.setPrincipal(exPrincipal);
@@ -80,7 +81,7 @@ public class ServerWebExchangeParser {
 					.flux()
 					.collectList()
 					.flatMap(sessionList -> {
-						log.info("got -> (sessionList) {}", sessionList);
+						log.debug("got -> (sessionList) {}", sessionList);
 						WebSession session = sessionList.isEmpty() ? null : sessionList.get(0);
 						ExWebSession exSession = webSessionParser.parse(session);
 						information.setSession(exSession);
@@ -89,7 +90,7 @@ public class ServerWebExchangeParser {
 							.flux()
 							.collectList()
 							.flatMap(formDataList -> {
-								log.info("got -> (formDataList) {}", formDataList);
+								log.debug("got -> (formDataList) {}", formDataList);
 								MultiValueMap<String, String> formData = formDataList.isEmpty() ? null : formDataList.get(0);
 								ExMultiValueMap<String, String> exFormData = multiValueMapParser.parse(formData);
 								information.setFormData(exFormData);
@@ -98,7 +99,7 @@ public class ServerWebExchangeParser {
 									.flux()
 									.collectList()
 									.flatMap(multipartDataList -> {
-										log.info("got -> (multipartDataList) {}", multipartDataList);
+										log.debug("got -> (multipartDataList) {}", multipartDataList);
 										MultiValueMap<String, Part> multipartData = multipartDataList.isEmpty() ? null : multipartDataList.get(0);
 										ExMultiValueMap<String, Part> exMultiValueMap = multiValueMapParser.parse(multipartData);
 										if (null != exMultiValueMap) {
@@ -155,7 +156,7 @@ public class ServerWebExchangeParser {
 
 	private void parseSyncState(ServerWebExchange serverWebExchange, Information information) {
 
-		log.info("parse sync state -> (serverWebExchange) {} (information) {}", serverWebExchange, information);
+		log.debug("parse sync state -> (serverWebExchange) {} (information) {}", serverWebExchange, information);
 
 		ApplicationContext applicationContext = serverWebExchange.getApplicationContext();
 		ExApplicationContext exApplicationContext = applicationContextParser.parse(applicationContext);
@@ -179,9 +180,16 @@ public class ServerWebExchangeParser {
 		information.setNotModifiedFlag(notModifiedFlag);
 	}
 
+	/**
+	 * 
+	 * @param serverWebExchange
+	 * @throws StackOverflowError
+	 * @return
+	 */
+	@Deprecated
 	public Mono<Information> parse(ServerWebExchange serverWebExchange) {
 
-		log.info("parse -> (serverWebExchange) {}", serverWebExchange);
+		log.debug("parse -> (serverWebExchange) {}", serverWebExchange);
 		Information information = new Information();
 
 		if (null == serverWebExchange) {

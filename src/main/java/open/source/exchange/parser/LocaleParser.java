@@ -21,7 +21,7 @@ public class LocaleParser {
 
 	private ExLocale parseCore(Locale locale) {
 
-		log.info("parse core -> (locale) {}", locale);
+		log.debug("parse core -> (locale) {}", locale);
 		ExLocale exLocale = null;
 
 		if (null != locale) {
@@ -81,7 +81,7 @@ public class LocaleParser {
 
 	private ExLocale parseNonCore(Locale locale, ExLocale exLocale) {
 
-		log.info("parse non core -> (locale) {} (exLocale) {}", locale, exLocale);
+		log.debug("parse non core -> (locale) {} (exLocale) {}", locale, exLocale);
 
 		if (null != exLocale) {
 			Locale stripExtensions = locale.stripExtensions();
@@ -93,7 +93,7 @@ public class LocaleParser {
 
 	public ExLocale parse(Locale locale) {
 
-		log.info("parse -> (locale) {}", locale);
+		log.debug("parse -> (locale) {}", locale);
 		ExLocale exLocale = parseCore(locale);
 		return parseNonCore(locale, exLocale);
 	}

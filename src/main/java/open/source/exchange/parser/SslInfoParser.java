@@ -28,7 +28,7 @@ public class SslInfoParser {
 
 	public ExSslInfo parse(SslInfo sslInfo) {
 
-		log.info("parse -> (sslInfo) {}", sslInfo);
+		log.debug("parse -> (sslInfo) {}", sslInfo);
 		ExSslInfo exSslInfo = null;
 
 		if (null != sslInfo) {

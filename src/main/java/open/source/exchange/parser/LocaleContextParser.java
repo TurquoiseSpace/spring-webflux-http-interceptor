@@ -25,7 +25,7 @@ public class LocaleContextParser {
 
 	public ExLocaleContext parse(LocaleContext localeContext) {
 
-		log.info("parse -> (localeContext) {}", localeContext);
+		log.debug("parse -> (localeContext) {}", localeContext);
 		ExLocaleContext exLocaleContext = null;
 
 		if (null != localeContext) {

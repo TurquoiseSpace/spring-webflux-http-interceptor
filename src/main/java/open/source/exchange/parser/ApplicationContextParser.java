@@ -24,7 +24,7 @@ public class ApplicationContextParser {
 
 	private ExApplicationContext parseCore(ApplicationContext applicationContext) {
 
-		log.info("parse core -> (applicationContext) {}", applicationContext);
+		log.debug("parse core -> (applicationContext) {}", applicationContext);
 		ExApplicationContext exApplicationContext = null;
 
 		if (null != applicationContext) {
@@ -58,7 +58,7 @@ public class ApplicationContextParser {
 
 	private ExApplicationContext parseNonCore(ApplicationContext applicationContext, ExApplicationContext exApplicationContext) {
 
-		log.info("parse non core -> (applicationContext) {} (exApplicationContext) {}", applicationContext, exApplicationContext);
+		log.debug("parse non core -> (applicationContext) {} (exApplicationContext) {}", applicationContext, exApplicationContext);
 
 		if (null != exApplicationContext) {
 			ApplicationContext parent = applicationContext.getParent();
@@ -70,7 +70,7 @@ public class ApplicationContextParser {
 
 	public ExApplicationContext parse(ApplicationContext applicationContext) {
 
-		log.info("parse -> (applicationContext) {}", applicationContext);
+		log.debug("parse -> (applicationContext) {}", applicationContext);
 
 		ExApplicationContext exApplicationContext = parseCore(applicationContext);
 		return parseNonCore(applicationContext, exApplicationContext);

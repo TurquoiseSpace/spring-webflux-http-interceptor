@@ -38,7 +38,7 @@ public class ZonedDateTimeParser {
 
 	private ExZonedDateTime parseCore(ZonedDateTime zonedDateTime) {
 
-		log.info("parse core -> (zonedDateTime) {}", zonedDateTime);
+		log.debug("parse core -> (zonedDateTime) {}", zonedDateTime);
 		ExZonedDateTime exZonedDateTime = null;
 
 		if (null != zonedDateTime) {
@@ -117,7 +117,7 @@ public class ZonedDateTimeParser {
 
 	private ExZonedDateTime parseNonCore(ZonedDateTime zonedDateTime, ExZonedDateTime exZonedDateTime) {
 
-		log.info("parse non core -> (zonedDateTime) {}", zonedDateTime);
+		log.debug("parse non core -> (zonedDateTime) {}", zonedDateTime);
 
 		if (null != exZonedDateTime) {
 			ZonedDateTime withEarlierOffsetAtOverlap = zonedDateTime.withEarlierOffsetAtOverlap();
@@ -137,7 +137,7 @@ public class ZonedDateTimeParser {
 
 	public ExZonedDateTime parse(ZonedDateTime zonedDateTime) {
 
-		log.info("parse -> (zonedDateTime) {}", zonedDateTime);
+		log.debug("parse -> (zonedDateTime) {}", zonedDateTime);
 
 		ExZonedDateTime exZonedDateTime = parseCore(zonedDateTime);
 		return parseNonCore(zonedDateTime, exZonedDateTime);

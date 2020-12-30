@@ -86,7 +86,7 @@ public class ParserHelper {
 	public void identifyAndPersist(ServerWebExchange serverWebExchange, ExchangeInformationType exchangeInformationType) {
 
 		String identifier = identifier();
-		log.info("identify and persist -> (identifier) {} (exchangeInformationType) {}", identifier, exchangeInformationType);
+		log.debug("identify and persist -> (identifier) {} (exchangeInformationType) {}", identifier, exchangeInformationType);
 
 		Mono<Boolean> monoCall = null;
 
@@ -111,7 +111,7 @@ public class ParserHelper {
 				ServerHttpRequest request = serverWebExchange.getRequest();
 				monoCall = serverHttpRequestParser.parse(request)
 					.flatMap(exServerHttpRequest -> {
-						log.info("got -> (exServerHttpRequest) {}", exServerHttpRequest);
+						log.debug("got -> (exServerHttpRequest) {}", exServerHttpRequest);
 						return informationExchangeRepoAsync.updateAttribute(identifier, exchangeInformationType.name(), exServerHttpRequest);
 					});
 				break;
@@ -121,7 +121,7 @@ public class ParserHelper {
 					.flux()
 					.collectList()
 					.flatMap(principalList -> {
-						log.info("got -> (principalList) {}", principalList);
+						log.debug("got -> (principalList) {}", principalList);
 						Principal principal = principalList.isEmpty() ? null : principalList.get(0);
 						ExPrincipal exPrincipal = principalParser.parse(principal);
 						return informationExchangeRepoAsync.updateAttribute(identifier, exchangeInformationType.name(), exPrincipal);
@@ -133,7 +133,7 @@ public class ParserHelper {
 					.flux()
 					.collectList()
 					.flatMap(sessionList -> {
-						log.info("got -> (sessionList) {}", sessionList);
+						log.debug("got -> (sessionList) {}", sessionList);
 						WebSession session = sessionList.isEmpty() ? null : sessionList.get(0);
 						ExWebSession exSession = webSessionParser.parse(session);
 						return informationExchangeRepoAsync.updateAttribute(identifier, exchangeInformationType.name(), exSession);
@@ -145,7 +145,7 @@ public class ParserHelper {
 					.flux()
 					.collectList()
 					.flatMap(formDataList -> {
-						log.info("got -> (formDataList) {}", formDataList);
+						log.debug("got -> (formDataList) {}", formDataList);
 						MultiValueMap<String, String> formData = formDataList.isEmpty() ? null : formDataList.get(0);
 						ExMultiValueMap<String, String> exFormData = multiValueMapParser.parse(formData);
 						return informationExchangeRepoAsync.updateAttribute(identifier, exchangeInformationType.name(), exFormData);
@@ -157,7 +157,7 @@ public class ParserHelper {
 					.flux()
 					.collectList()
 					.flatMap(multipartDataList -> {
-						log.info("got -> (multipartDataList) {}", multipartDataList);
+						log.debug("got -> (multipartDataList) {}", multipartDataList);
 						MultiValueMap<String, Part> multipartData = multipartDataList.isEmpty() ? null : multipartDataList.get(0);
 						ExMultiValueMap<String, Part> exMultiValueMap = multiValueMapParser.parse(multipartData);
 						if (null != exMultiValueMap) {

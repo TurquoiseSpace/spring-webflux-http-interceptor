@@ -20,7 +20,7 @@ public class LocaleLanguageRangeParser {
 
 	public ExLocaleLanguageRange parse(Locale.LanguageRange localeLanguageRange) {
 
-		log.info("parse -> (localeLanguageRange) {}", localeLanguageRange);
+		log.debug("parse -> (localeLanguageRange) {}", localeLanguageRange);
 		ExLocaleLanguageRange exLocaleLanguageRange = null;
 
 		if (null != localeLanguageRange) {

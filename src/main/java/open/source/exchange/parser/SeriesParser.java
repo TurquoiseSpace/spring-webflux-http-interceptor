@@ -20,7 +20,7 @@ public class SeriesParser {
 
 	public ExSeries parse(Series series) {
 
-		log.info("parse -> (series) {}", series);
+		log.debug("parse -> (series) {}", series);
 		ExSeries exSeries = null;
 
 		if (null != series) {

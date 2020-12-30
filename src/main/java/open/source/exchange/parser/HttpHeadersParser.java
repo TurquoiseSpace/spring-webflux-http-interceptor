@@ -68,7 +68,7 @@ public class HttpHeadersParser {
 
 	public ExHttpHeaders parse(HttpHeaders httpHeaders) {
 
-		log.info("parse -> (httpHeaders) {}", httpHeaders);
+		log.debug("parse -> (httpHeaders) {}", httpHeaders);
 		ExHttpHeaders exHttpHeaders = null;
 
 		if (null != httpHeaders) {

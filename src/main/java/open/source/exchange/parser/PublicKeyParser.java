@@ -21,7 +21,7 @@ public class PublicKeyParser {
 
 	public ExPublicKey parse(PublicKey publicKey) {
 
-		log.info("parse -> (publicKey) {}", publicKey);
+		log.debug("parse -> (publicKey) {}", publicKey);
 		ExPublicKey exPublicKey = null;
 
 		if (null != publicKey) {

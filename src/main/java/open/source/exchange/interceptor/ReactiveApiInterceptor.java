@@ -67,7 +67,8 @@ public class ReactiveApiInterceptor implements WebFilter {
 		long startTimestamp = System.currentTimeMillis();
 		// to get the nano timeframe precision computation, use value of System.nanoTime()
 		long nanoFrameStart = System.nanoTime();
-		log.info("request interceptor -> (startTimestamp) {} (nanosFrameStart) {}", startTimestamp, nanoFrameStart);
+		log.info("request interceptor -> (requestId) {} (startTimestamp) {} (nanosFrameStart) {}",
+				requestId, startTimestamp, nanoFrameStart);
 
 		String identifier = identifier(requestId, startTimestamp);
 		MDC.put("identifier", identifier);
@@ -78,11 +79,9 @@ public class ReactiveApiInterceptor implements WebFilter {
 
 				long endTimestamp = System.currentTimeMillis();
 				long nanoFrameEnd = System.nanoTime();
-				log.info("interceptor at response -> (endTimestamp) {} (nanoFrameEnd) {}",
-						endTimestamp, nanoFrameEnd);
-
 				long totalTime = nanoFrameEnd - nanoFrameStart;
-				log.info("response interceptor -> (signalType) {} (totalTime) {} nano seconds", signalType, totalTime);
+				log.info("response interceptor -> (requestId) {} (endTimestamp) {} (nanoFrameEnd) {} (signalType) {} (totalTime) {} nano seconds",
+						requestId, endTimestamp, nanoFrameEnd, signalType, totalTime);
 
 				Map<TimeEvent, Time<Long>> events = buildEvents(startTimestamp, endTimestamp, totalTime);
 

@@ -31,7 +31,7 @@ public class WebSessionParser {
 
 	public ExWebSession parse(WebSession webSession) {
 
-		log.info("parse -> (webSession) {}", webSession);
+		log.debug("parse -> (webSession) {}", webSession);
 		ExWebSession exWebSession = null;
 
 		if (null != webSession) {
