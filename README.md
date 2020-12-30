@@ -15,12 +15,12 @@ parse & persist HTTP / REST API Calls
 Add dependency as jar (ant) or in pom.xml (maven), to your Java microservice or web application
 
 	<properties>
-		<turquoise.space.version>0.0.2</turquoise.space.version>
+		<turquoise.space.version>0.0.3</turquoise.space.version>
 	</properties>
 
 	<dependencies>
 		<dependency>
-			<groupId>space.turquoise</groupId>
+			<groupId>com.github.TurquoiseSpace</groupId>
 			<artifactId>spring-webflux-http-interceptor</artifactId>
 			<version>${turquoise.space.version}</version>
 		</dependency>
