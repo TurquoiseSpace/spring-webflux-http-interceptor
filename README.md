@@ -115,18 +115,6 @@ Compile & Build
 	mvn -Dmaven.artifact.threads=25 clean eclipse:eclipse -DdownloadSources=true dependency:go-offline install
 
 
-Package
-
-	mvn -B package --file pom.xml
-
-
-Publish
-
-	mvn deploy -e -X
-
-	mvn deploy --settings /home/mafia/.m2/setting.xml --global-settings /space/tools/apache-maven-3.6.3/conf/settings.xml
-
-
 
 ### PGP Signature ###
 
@@ -171,6 +159,24 @@ Verify
 	gpg --verify pom.xml.asc
 
 	gpg --verify target/spring-webflux-http-interceptor-0.0.3.jar.asc
+
+
+
+### Maven Central OSSRH Sonatype ###
+
+
+Package
+
+	mvn -B package --file pom.xml
+
+
+Publish
+
+	mvn deploy -e -X
+
+	mvn nexus-staging:release --settings /home/mafia/.m2/setting.xml --global-settings /space/tools/apache-maven-3.6.3/conf/settings.xml -DstagingRepositoryId=ossrh
+
+	mvn deploy --settings /home/mafia/.m2/setting.xml --global-settings /space/tools/apache-maven-3.6.3/conf/settings.xml
 
 
 
