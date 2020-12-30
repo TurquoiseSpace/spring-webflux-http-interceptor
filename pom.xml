@@ -7,7 +7,7 @@
 	<!-- [ERROR] Failed to execute goal org.apache.maven.plugins:maven-deploy-plugin:2.7:deploy (default-deploy) on project spring-webflux-http-interceptor: Deployment failed: repository element was not specified in the POM inside distributionManagement element or in -DaltDeploymentRepository=id::layout::url parameter -> [Help 1] -->
 	<!-- <groupId>TurquoiseSpace</groupId> -->
 
-	<groupId>space.turquoise</groupId>
+	<groupId>com.github.turquoisespace</groupId>
 	<artifactId>spring-webflux-http-interceptor</artifactId>
 	<version>0.0.2</version>
 
