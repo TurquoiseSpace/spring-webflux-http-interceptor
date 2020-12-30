@@ -126,3 +126,49 @@ Publish
 
 
 
+### PGP Signature ###
+
+
+Check Version
+
+	gpg --version
+
+
+Setup
+
+	gpg --gen-key
+
+
+List Keys
+
+	gpg --list-keys
+
+	gpg --list-secret-keys
+
+
+Sync
+
+	gpg --keyserver hkp://pool.sks-keyservers.net --send-keys <key>
+
+	gpg --keyserver hkp://pool.sks-keyservers.net --recv-keys <key>
+
+
+
+### Signing ###
+
+
+Sign
+
+	gpg -ab pom.xml
+
+	gpg -ab target/spring-webflux-http-interceptor-0.0.3.jar
+
+
+Verify
+
+	gpg --verify pom.xml.asc
+
+	gpg --verify target/spring-webflux-http-interceptor-0.0.3.jar.asc
+
+
+
