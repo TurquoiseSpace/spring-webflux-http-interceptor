@@ -124,6 +124,8 @@ Publish
 
 	mvn deploy -e -X
 
+	mvn deploy --settings /home/mafia/.m2/setting.xml --global-settings /space/tools/apache-maven-3.6.3/conf/settings.xml
+
 
 
 ### PGP Signature ###
@@ -148,9 +150,9 @@ List Keys
 
 Sync
 
-	gpg --keyserver hkp://pool.sks-keyservers.net --send-keys <key>
+	gpg --keyserver http://keyserver.ubuntu.com --send-keys <key>
 
-	gpg --keyserver hkp://pool.sks-keyservers.net --recv-keys <key>
+	gpg --keyserver http://keyserver.ubuntu.com --recv-keys <key>
 
 
 
