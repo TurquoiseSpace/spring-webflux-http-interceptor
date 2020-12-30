@@ -75,8 +75,46 @@
 		</dependency>
 	</dependencies>
 
+	<distributionManagement>
+		<snapshotRepository>
+			<id>ossrh</id>
+			<url>https://oss.sonatype.org/content/repositories/snapshots</url>
+		</snapshotRepository>
+		<repository>
+			<id>ossrh</id>
+			<url>https://oss.sonatype.org/service/local/staging/deploy/maven2/</url>
+		</repository>
+	</distributionManagement>
+
+	<!-- https://central.sonatype.org/pages/apache-maven.html -->
 	<build>
 		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-source-plugin</artifactId>
+				<version>3.2.1</version>
+				<executions>
+					<execution>
+						<id>attach-sources</id>
+						<goals>
+							<goal>jar-no-fork</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-javadoc-plugin</artifactId>
+				<version>3.2.0</version>
+				<executions>
+					<execution>
+						<id>attach-javadocs</id>
+						<goals>
+							<goal>jar</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-compiler-plugin</artifactId>
@@ -93,73 +131,43 @@
 					</annotationProcessorPaths>
 				</configuration>
 			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-gpg-plugin</artifactId>
+				<version>1.6</version>
+				<executions>
+					<execution>
+						<id>sign-artifacts</id>
+						<phase>verify</phase>
+						<goals>
+							<goal>sign</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+			<plugin>
+				<groupId>org.sonatype.plugins</groupId>
+				<artifactId>nexus-staging-maven-plugin</artifactId>
+				<version>1.6.8</version>
+				<extensions>true</extensions>
+				<configuration>
+					<serverId>ossrh</serverId>
+					<nexusUrl>https://oss.sonatype.org/</nexusUrl>
+					<autoReleaseAfterClose>true</autoReleaseAfterClose>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-release-plugin</artifactId>
+				<version>2.5.3</version>
+				<configuration>
+					<autoVersionSubmodules>true</autoVersionSubmodules>
+					<useReleaseProfile>false</useReleaseProfile>
+					<releaseProfiles>release</releaseProfiles>
+					<goals>deploy</goals>
+				</configuration>
+			</plugin>
 		</plugins>
 	</build>
-
-	<!-- https://docs.github.com/en/free-pro-team@latest/packages/guides/configuring-apache-maven-for-use-with-github-packages -->
-	<!-- https://docs.github.com/en/free-pro-team@latest/packages/learn-github-packages/about-github-packages#authenticating-to-github-packages -->
-	<!-- https://docs.github.com/en/free-pro-team@latest/packages/guides/package-client-guides-for-github-packages -->
-	<!--
-	<distributionManagement>
-		<repository>
-	-->
-			<!-- http://maven.apache.org/pom.html#Repositories -->
-
-			<!-- when groupId was space.turquoise -->
-			<!--
-			<id>codehausSnapshots</id>
-			<name>Codehaus Snapshots</name>
-			<url>http://snapshots.maven.codehaus.org/maven2</url>
-			<layout>default</layout>
-			-->
-			<!-- [ERROR] Failed to execute goal org.apache.maven.plugins:maven-deploy-plugin:2.7:deploy (default-deploy) on project spring-webflux-http-interceptor: Failed to deploy artifacts: Could not transfer artifact space.turquoise:spring-webflux-http-interceptor:jar:0.0.2 from/to codehausSnapshots (http://snapshots.maven.codehaus.org/maven2): Transfer failed for http://snapshots.maven.codehaus.org/maven2/space/turquoise/spring-webflux-http-interceptor/0.0.2/spring-webflux-http-interceptor-0.0.2.jar: Unknown host snapshots.maven.codehaus.org: Name or service not known -> [Help 1] -->
-			<!-- http://maven.apache.org/pom.html#Repositories -->
-
-			<!--
-			<id>github</id>
-			<name>GitHub Turquoise Space Apache Maven Packages</name>
-			-->
-
-			<!-- when groupId was space.turquoise -->
-			<!-- <url>https://maven.pkg.github.com</url> -->
-			<!-- [ERROR] Failed to execute goal org.apache.maven.plugins:maven-deploy-plugin:2.7:deploy (default-deploy) on project spring-webflux-http-interceptor: Failed to deploy artifacts: Could not transfer artifact space.turquoise:spring-webflux-http-interceptor:jar:0.0.2 from/to github (https://maven.pkg.github.com): Transfer failed for https://maven.pkg.github.com/space/turquoise/spring-webflux-http-interceptor/0.0.2/spring-webflux-http-interceptor-0.0.2.jar 401 Unauthorized -> [Help 1] -->
-
-			<!-- when groupId was space.turquoise -->
-			<!-- <url>https://maven.pkg.github.com/TurquoiseSpace/spring-webflux-http-interceptor</url> -->
-			<!--
-				[ERROR] Failed to execute goal org.apache.maven.plugins:maven-deploy-plugin:2.7:deploy (default-deploy)
-				on project spring-webflux-http-interceptor:
-				Failed to deploy artifacts:
-				Could not transfer artifact space.turquoise:spring-webflux-http-interceptor:jar:0.0.2
-				from/to github (https://maven.pkg.github.com/TurquoiseSpace/spring-webflux-http-interceptor):
-				Transfer failed for https://maven.pkg.github.com/TurquoiseSpace/spring-webflux-http-interceptor/space/turquoise/spring-webflux-http-interceptor/0.0.2/spring-webflux-http-interceptor-0.0.2.jar
-				401 Unauthorized -> [Help 1] -->
-
-			<!-- when groupId was TurquoiseSpace -->
-			<!-- <url>https://maven.pkg.github.com</url> -->
-			<!--
-				[ERROR] Failed to execute goal org.apache.maven.plugins:maven-deploy-plugin:2.7:deploy (default-deploy)
-				on project spring-webflux-http-interceptor:
-				Failed to deploy artifacts:
-				Could not transfer artifact TurquoiseSpace:spring-webflux-http-interceptor:jar:0.0.2 
-				from/to github (https://maven.pkg.github.com):
-				Transfer failed for https://maven.pkg.github.com/TurquoiseSpace/spring-webflux-http-interceptor/0.0.2/spring-webflux-http-interceptor-0.0.2.jar 
-				401 Unauthorized -> [Help 1]
-			-->
-
-			<!-- when groupId was TurquoiseSpace -->
-			<!-- <url>https://maven.pkg.github.com/TurquoiseSpace/spring-webflux-http-interceptor</url> -->
-			<!-- [ERROR] Failed to execute goal org.apache.maven.plugins:maven-deploy-plugin:2.7:deploy (default-deploy)
-				on project spring-webflux-http-interceptor:
-				Failed to deploy artifacts: 
-				Could not transfer artifact TurquoiseSpace:spring-webflux-http-interceptor:jar:0.0.2 
-				from/to github (https://maven.pkg.github.com/TurquoiseSpace/spring-webflux-http-interceptor): 
-				Transfer failed for https://maven.pkg.github.com/TurquoiseSpace/spring-webflux-http-interceptor/TurquoiseSpace/spring-webflux-http-interceptor/0.0.2/spring-webflux-http-interceptor-0.0.2.jar 
-				401 Unauthorized -> [Help 1]
-			-->
-	<!--
-		</repository>
-	</distributionManagement>
-	-->
 
 </project>
