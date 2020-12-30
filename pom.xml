@@ -9,7 +9,7 @@
 
 	<groupId>com.github.TurquoiseSpace</groupId>
 	<artifactId>spring-webflux-http-interceptor</artifactId>
-	<version>0.0.3</version>
+	<version>0.0.4</version>
 
 	<name>Spring Webflux HTTP Interceptor</name>
 	<description>Persist Module</description>
@@ -153,7 +153,7 @@
 				<configuration>
 					<serverId>ossrh</serverId>
 					<nexusUrl>https://oss.sonatype.org/</nexusUrl>
-					<autoReleaseAfterClose>false</autoReleaseAfterClose>
+					<autoReleaseAfterClose>true</autoReleaseAfterClose>
 				</configuration>
 			</plugin>
 			<plugin>
