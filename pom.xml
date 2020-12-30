@@ -9,7 +9,7 @@
 
 	<groupId>com.github.TurquoiseSpace</groupId>
 	<artifactId>spring-webflux-http-interceptor</artifactId>
-	<version>0.0.4</version>
+	<version>0.0.5</version>
 
 	<name>Spring Webflux HTTP Interceptor</name>
 	<description>Persist Module</description>
