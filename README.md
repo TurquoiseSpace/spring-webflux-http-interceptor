@@ -15,7 +15,7 @@ parse & persist HTTP / REST API Calls
 Add dependency as jar (ant) or in pom.xml (maven), to your Java microservice or web application
 
 	<properties>
-		<turquoise.space.version>0.0.3</turquoise.space.version>
+		<turquoise.space.version>0.0.4</turquoise.space.version>
 	</properties>
 
 	<dependencies>
