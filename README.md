@@ -5,7 +5,12 @@
 
 Plug & Play Module
 
-parse & persist HTTP / REST API Calls
+
+
+### Description ###
+
+
+parse & persist HTTP / REST API Calls in MongoDB
 
 
 
@@ -38,26 +43,39 @@ Add (class level) annotation to java bean configuration class of the MongoDB Con
 
 
 
-### Developer Setup ###
+### Collaborate - Developer Setup ###
 
 
-Clone via HTTPS
+Pre-requisite Tools (Softwares)
+
+	JDK 1.8
+	
+	Apache Maven
+	
+	Git CLI
+	
+	MongoDB Server
+	
+	Robo3T
+	
+	Java IDE - Eclipse / intelliJ
+	
+	Postman / cURL
+
+
+Clone via
+
+`HTTPS`
 
 	https://github.com/TurquoiseSpace/spring-webflux-http-interceptor.git
 
-
-Clone via SSH
+`SSH`
 
 	git@github.com:TurquoiseSpace/spring-webflux-http-interceptor.git
 
-
-Clone via GitHub CLI
+`GitHub CLI`
 
 	gh repo clone TurquoiseSpace/spring-webflux-http-interceptor
-
-
-
-### Collaborate ###
 
 
 Set User Name & Email
@@ -75,6 +93,48 @@ Remember Git Remote Credentials
 Forget Git Remote Credentials
 
 	git config  --unset credential.helper
+
+
+
+### Help - Starting off with "Spring WebFlux HTTP Interceptor" ###
+
+
+The actual code is located inside
+
+	./src/main/java/
+
+with the base package as
+
+	open.source.exchange
+
+and child packages (shows the call heirarchy from top to bottom)
+and in java files
+
+	interceptor
+		ReactiveApiInterceptor.java
+	service
+		InformationExchangeService.java
+		ParserHelper.java
+	utility.asynchronous
+		MonoCallSynchronousExecutor.java
+	repository.asynchronous
+		InformationExchangeRepoAsync.java
+	parser
+		ApplicationContextParser.java
+		WebSessionParser.java
+		LocaleContextParser.java
+		ServerHttpRequestParser.java
+		ServerHttpResponseParser.java
+		PrincipalParser.java
+		PartParser.java
+	entity
+		InformationExchange.java
+	model
+		Information.java
+	enumeration
+		ExchangeInformationType.java
+		TimeEvent.java
+		TimeUnit.java
 
 
 
@@ -161,6 +221,5 @@ Publish
 	mvn nexus-staging:release --settings /home/mafia/.m2/setting.xml --global-settings /space/tools/apache-maven-3.6.3/conf/settings.xml -DstagingRepositoryId=ossrh
 
 	mvn deploy --settings /home/mafia/.m2/setting.xml --global-settings /space/tools/apache-maven-3.6.3/conf/settings.xml
-
 
 
