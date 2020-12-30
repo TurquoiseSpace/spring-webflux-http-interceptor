@@ -12,51 +12,29 @@ parse & persist HTTP / REST API Calls
 ### Usage ###
 
 
-Add dependency as jar (ant) or in pom.xml (maven), to your Java microservice or web application
-
-	<properties>
-		<turquoise.space.version>0.0.4</turquoise.space.version>
-	</properties>
+Add jar (ant) or as dependency in pom.xml (maven), to your Java Spring WebFlux, Microservice, or Web Application
 
 	<dependencies>
 		<dependency>
 			<groupId>com.github.TurquoiseSpace</groupId>
 			<artifactId>spring-webflux-http-interceptor</artifactId>
-			<version>${turquoise.space.version}</version>
+			<version>0.0.5</version>
 		</dependency>
 	</dependencies>
 
 
-Add annotation to the java class which contains main() method
+Add (class level) annotation to the java class which contains main() method of the Web Application
 
-	@ComponentScan(basePackages = { "open.source", "<actual.application.base.package.containg.this.class.with.main.method>" })
+	@ComponentScan(basePackages = { "open.source", "${application.base.package}" })
+	public class SpringWebFluxApplication { }
 
 
-Add the following java bean config class to your project
+Add (class level) annotation to java bean configuration class of the MongoDB Configuration
 
-	import org.springframework.context.annotation.Bean;
-	import org.springframework.context.annotation.Configuration;
-	import org.springframework.data.mongodb.MongoDbFactory;
-	import org.springframework.data.mongodb.config.EnableMongoAuditing;
-	import org.springframework.data.mongodb.core.convert.DbRefResolver;
-	import org.springframework.data.mongodb.core.convert.DefaultDbRefResolver;
-	import org.springframework.data.mongodb.core.convert.MappingMongoConverter;
-	import org.springframework.data.mongodb.core.mapping.MongoMappingContext;
-	import org.springframework.data.mongodb.repository.config.EnableReactiveMongoRepositories;
 	@Configuration
 	@EnableMongoAuditing
 	@EnableReactiveMongoRepositories(value = { "open.source.exchange.repository.asynchronous", "<actual.application.base.package.containg.asynchronous.repositories>" })
-	public class MongoReactiveConfig {
-		// config which just mentions based on MongoReactiveDataAutoConfiguration
-		// https://stackoverflow.com/questions/39785004/mongodb-escape-dots-in-map-key
-		@Bean
-	    public MappingMongoConverter mongoConverter(MongoDbFactory mongoFactory, MongoMappingContext mongoMappingContext) {
-		DbRefResolver dbRefResolver = new DefaultDbRefResolver(mongoFactory);
-		MappingMongoConverter mongoConverter = new MappingMongoConverter(dbRefResolver, mongoMappingContext);
-		mongoConverter.setMapKeyDotReplacement("-");
-		return mongoConverter;
-	    }
-	}
+	public class MongoReactiveConfig { }
 
 
 
@@ -79,13 +57,6 @@ Clone via GitHub CLI
 
 
 
-### Branch ###
-
-
-`master` is the stable release branch
-
-
-
 ### Collaborate ###
 
 
@@ -96,14 +67,27 @@ Set User Name & Email
 	git config user.email "matcdac@gmail.com"
 
 
-Remember Credentials
+Remember Git Remote Credentials
 
 	git config credential.helper store
 
 
-Forget Credentials
+Forget Git Remote Credentials
 
 	git config  --unset credential.helper
+
+
+
+### Coding Conventions ###
+
+
+`master` is the stable release branch
+
+In order to contribute, checkout another branch or fork the repository
+
+Feel free raise a Merge / Pull Request
+
+If urgent, drop an email !
 
 
 
@@ -144,21 +128,21 @@ Sync
 
 
 
-### Signing ###
+### Signing (integrated functionality via maven plugin) ###
 
 
 Sign
 
 	gpg -ab pom.xml
 
-	gpg -ab target/spring-webflux-http-interceptor-0.0.3.jar
+	gpg -ab target/spring-webflux-http-interceptor-0.0.5.jar
 
 
 Verify
 
 	gpg --verify pom.xml.asc
 
-	gpg --verify target/spring-webflux-http-interceptor-0.0.3.jar.asc
+	gpg --verify target/spring-webflux-http-interceptor-0.0.5.jar.asc
 
 
 
