@@ -27,7 +27,7 @@ public class RequestPathParser {
 
 	public ExRequestPath parse(RequestPath requestPath) {
 
-		log.debug("parse -> (requestPath) {}", requestPath);
+		log.trace("parse -> (requestPath) {}", requestPath);
 		ExRequestPath exRequestPath = null;
 
 		if (null != requestPath) {

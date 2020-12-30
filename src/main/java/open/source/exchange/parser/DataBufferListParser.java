@@ -19,7 +19,7 @@ public class DataBufferListParser {
 		if (null != dataBufferList) {
 			try {
 				for (DataBuffer dataBuffer : dataBufferList) {
-					log.debug("data buffer -> (capacity) {} (readableByteCount) {}", dataBuffer.capacity(), dataBuffer.readableByteCount());
+					log.trace("data buffer -> (capacity) {} (readableByteCount) {}", dataBuffer.capacity(), dataBuffer.readableByteCount());
 					int size = dataBuffer.readableByteCount() < dataBuffer.capacity()
 						? dataBuffer.readableByteCount()
 						: dataBuffer.capacity();
@@ -28,9 +28,9 @@ public class DataBufferListParser {
 						byte current = dataBuffer.getByte(index);
 						byteArray[index] = current;
 					}
-					log.debug("formed -> (byteArray) {}", byteArray);
+					log.trace("formed -> (byteArray) {}", byteArray);
 					String dataBufferString = new String(byteArray);
-					log.debug("extracted -> (dataBufferString) {}", dataBufferString);
+					log.trace("extracted -> (dataBufferString) {}", dataBufferString);
 					stringBuilder.append(dataBufferString);
 				}
 			} catch (UnsupportedOperationException e) {
@@ -38,7 +38,7 @@ public class DataBufferListParser {
 			}
 		}
 		String completeDataBufferString = stringBuilder.toString();
-		log.debug("got -> (completeDataBufferString) {}", completeDataBufferString);
+		log.info("got -> (completeDataBufferString) {}", completeDataBufferString);
 		return completeDataBufferString;
 	}
 

@@ -25,7 +25,7 @@ public class MultiValueMapParser {
 
 	public <K, V> ExMultiValueMap<K, V> parse(MultiValueMap<K, V> multiValueMap) {
 
-		log.debug("parse -> (multiValueMap) {}", multiValueMap);
+		log.trace("parse -> (multiValueMap) {}", multiValueMap);
 		ExMultiValueMap<K, V> exMultiValueMap = null;
 
 		if (null != multiValueMap) {

@@ -30,7 +30,7 @@ public class ChronologyParser {
 
 	public ExChronology parse(Chronology chronology) {
 
-		log.debug("parse -> (chronology) {}", chronology);
+		log.trace("parse -> (chronology) {}", chronology);
 		ExChronology exChronology = null;
 
 		if (null != chronology) {

@@ -47,7 +47,7 @@ public class InformationExchangeService {
 	public void onEntry(long startTimestamp, ServerWebExchange serverWebExchange, String identifier) {
 
 		String requestId = serverWebExchange.getRequest().getId();
-		log.debug("on entry -> (requestId) {} (startTimestamp) {} (identifier) {}",
+		log.trace("on entry -> (requestId) {} (startTimestamp) {} (identifier) {}",
 				requestId, startTimestamp, identifier);
 
 		ExBase exBase = objectParser.parse(serverWebExchange);
@@ -79,7 +79,7 @@ public class InformationExchangeService {
 
 	public void onExit(SignalType signalType, ServerWebExchange serverWebExchange, String identifier, Map<TimeEvent, Time<Long>> events) {
 
-		log.debug("on exit -> (responseSignalType) {} (identifier) {}",
+		log.trace("on exit -> (responseSignalType) {} (identifier) {}",
 				signalType, identifier);
 
 		ExEnum exSignalType = enumParser.parse(signalType);

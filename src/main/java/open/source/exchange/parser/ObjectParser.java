@@ -18,7 +18,7 @@ public class ObjectParser {
 
 	public ExBase parse(Object object) {
 
-		log.debug("parse -> (object) {}", object);
+		log.trace("parse -> (object) {}", object);
 		ExBase exBase = null;
 
 		if (null != object) {

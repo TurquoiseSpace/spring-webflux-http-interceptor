@@ -20,7 +20,7 @@ public class EraParser {
 
 	public ExEra parse(Era era) {
 
-		log.debug("parse -> (era) {}", era);
+		log.trace("parse -> (era) {}", era);
 		ExEra exEra = null;
 
 		if (null != era) {

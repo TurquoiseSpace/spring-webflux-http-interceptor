@@ -20,7 +20,7 @@ public class HttpCookieParser {
 
 	public ExHttpCookie parse(HttpCookie httpCookie) {
 
-		log.debug("parse -> (httpCookie) {}", httpCookie);
+		log.trace("parse -> (httpCookie) {}", httpCookie);
 		ExHttpCookie exHttpCookie = null;
 
 		if (null != httpCookie) {

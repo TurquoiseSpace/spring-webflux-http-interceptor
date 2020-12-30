@@ -28,7 +28,7 @@ public class PathContainerParser {
 
 	public ExPathContainer parse(PathContainer pathContainer) {
 
-		log.debug("parse -> (pathContainer) {}", pathContainer);
+		log.trace("parse -> (pathContainer) {}", pathContainer);
 		ExPathContainer exPathContainer = null;
 
 		if (null != pathContainer) {

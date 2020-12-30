@@ -70,7 +70,7 @@ public class ServerHttpRequestParser {
 
 	private Mono<ExServerHttpRequest> parseAsyncState(ServerHttpRequest serverHttpRequest, ExServerHttpRequest exServerHttpRequest) {
 
-		log.debug("parse async state -> (serverHttpRequest) {} (exServerHttpRequest) {}", serverHttpRequest, exServerHttpRequest);
+		log.trace("parse async state -> (serverHttpRequest) {} (exServerHttpRequest) {}", serverHttpRequest, exServerHttpRequest);
 
 		// TODO : fix it
 		// https://stackoverflow.com/questions/45240005/how-to-log-request-and-response-bodies-in-spring-webflux
@@ -94,7 +94,7 @@ public class ServerHttpRequestParser {
 
 	private void parseSyncState(ServerHttpRequest serverHttpRequest, ExServerHttpRequest exServerHttpRequest) {
 
-		log.debug("parse sync state -> (serverHttpRequest) {} (exServerHttpRequest) {}", serverHttpRequest, exServerHttpRequest);
+		log.trace("parse sync state -> (serverHttpRequest) {} (exServerHttpRequest) {}", serverHttpRequest, exServerHttpRequest);
 
 		MultiValueMap<String, HttpCookie> cookies = serverHttpRequest.getCookies();
 		ExMultiValueMap<String, HttpCookie> exMultiValueMap = multiValueMapParser.parse(cookies);
@@ -164,7 +164,7 @@ public class ServerHttpRequestParser {
 
 	public Mono<ExServerHttpRequest> parse(ServerHttpRequest serverHttpRequest) {
 
-		log.debug("parse -> (serverHttpRequest) {}", serverHttpRequest);
+		log.trace("parse -> (serverHttpRequest) {}", serverHttpRequest);
 		ExServerHttpRequest exServerHttpRequest = new ExServerHttpRequest();
 
 		if (null == serverHttpRequest) {

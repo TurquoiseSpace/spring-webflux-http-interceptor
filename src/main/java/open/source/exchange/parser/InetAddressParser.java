@@ -21,7 +21,7 @@ public class InetAddressParser {
 
 	public ExInetAddress parse(InetAddress inetAddress) {
 
-		log.debug("parse -> (inetAddress) {}", inetAddress);
+		log.trace("parse -> (inetAddress) {}", inetAddress);
 		ExInetAddress exInetAddress = null;
 
 		if (null != inetAddress) {

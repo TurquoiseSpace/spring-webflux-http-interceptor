@@ -21,7 +21,7 @@ public class CharsetParser {
 
 	public ExCharset parse(Charset charset) {
 
-		log.debug("parse -> (charset) {}", charset);
+		log.trace("parse -> (charset) {}", charset);
 		ExCharset exCharset = null;
 
 		if (null != charset) {

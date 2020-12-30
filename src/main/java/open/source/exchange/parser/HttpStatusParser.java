@@ -25,7 +25,7 @@ public class HttpStatusParser {
 
 	public ExHttpStatus parse(HttpStatus httpStatus) {
 
-		log.debug("parse -> (httpStatus) {}", httpStatus);
+		log.trace("parse -> (httpStatus) {}", httpStatus);
 		ExHttpStatus exHttpStatus = null;
 
 		if (null != httpStatus) {

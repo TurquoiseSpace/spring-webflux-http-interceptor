@@ -20,7 +20,7 @@ public class X500PrincipalParser {
 
 	public ExX500Principal parse(X500Principal x500Principal) {
 
-		log.debug("parse -> (x500Principal) {}", x500Principal);
+		log.trace("parse -> (x500Principal) {}", x500Principal);
 		ExX500Principal exX500Principal = null;
 
 		if (null != x500Principal) {

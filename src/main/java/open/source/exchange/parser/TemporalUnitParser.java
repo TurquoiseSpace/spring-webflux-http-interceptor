@@ -21,7 +21,7 @@ public class TemporalUnitParser {
 
 	public ExTemporalUnit parse(TemporalUnit temporalUnit) {
 
-		log.debug("parse -> (temporalUnit) {}", temporalUnit);
+		log.trace("parse -> (temporalUnit) {}", temporalUnit);
 		ExTemporalUnit exTemporalUnit = null;
 
 		if (null != temporalUnit) {

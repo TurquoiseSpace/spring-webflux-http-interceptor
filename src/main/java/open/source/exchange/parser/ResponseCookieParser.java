@@ -26,7 +26,7 @@ public class ResponseCookieParser {
 
 	public ExResponseCookie parse(ResponseCookie responseCookie) {
 
-		log.debug("parse -> (responseCookie) {}", responseCookie);
+		log.trace("parse -> (responseCookie) {}", responseCookie);
 		ExResponseCookie exResponseCookie = null;
 
 		if (null != responseCookie) {

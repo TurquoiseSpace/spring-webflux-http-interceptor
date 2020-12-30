@@ -20,7 +20,7 @@ public class HttpMethodParser {
 
 	public ExHttpMethod parse(HttpMethod httpMethod) {
 
-		log.debug("parse -> (httpMethod) {}", httpMethod);
+		log.trace("parse -> (httpMethod) {}", httpMethod);
 		ExHttpMethod exHttpMethod = null;
 
 		if (null != httpMethod) {

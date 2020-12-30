@@ -30,7 +30,7 @@ public class ContentDispositionParser {
 
 	public ExContentDisposition parse(ContentDisposition contentDisposition) {
 
-		log.debug("parse -> (contentDisposition) {}", contentDisposition);
+		log.trace("parse -> (contentDisposition) {}", contentDisposition);
 		ExContentDisposition exContentDisposition = null;
 
 		if (null != contentDisposition) {

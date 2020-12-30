@@ -52,7 +52,7 @@ public class X509CertificateParser {
 
 	private Collection<List<Object>> normalize(Collection<List<?>> collection) {
 
-		log.debug("normalize -> (collection) {}", collection);
+		log.trace("normalize -> (collection) {}", collection);
 		Collection<List<Object>> normalized = null;
 
 		if (null != collection && !collection.isEmpty()) {
@@ -75,7 +75,7 @@ public class X509CertificateParser {
 
 	public ExX509Certificate parse(X509Certificate x509Certificate) {
 
-		log.debug("parse -> (x509Certificate) {}", x509Certificate);
+		log.trace("parse -> (x509Certificate) {}", x509Certificate);
 		ExX509Certificate exX509Certificate = null;
 
 		if (null != x509Certificate) {

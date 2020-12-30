@@ -26,7 +26,7 @@ public class MediaTypeParser {
 
 	private ExMediaType parseCore(MediaType mediaType) {
 
-		log.debug("parse core -> (mediaType) {}", mediaType);
+		log.trace("parse core -> (mediaType) {}", mediaType);
 		ExMediaType exMediaType = null;
 
 		if (null != mediaType) {
@@ -63,7 +63,7 @@ public class MediaTypeParser {
 
 	public ExMediaType parse(MediaType mediaType) {
 
-		log.debug("parse -> (mediaType) {}", mediaType);
+		log.trace("parse -> (mediaType) {}", mediaType);
 		ExMediaType exMediaType = parseCore(mediaType);
 
 		if (null != exMediaType) {

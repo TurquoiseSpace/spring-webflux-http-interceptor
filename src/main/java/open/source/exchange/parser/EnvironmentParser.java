@@ -19,7 +19,7 @@ public class EnvironmentParser {
 
 	public ExEnvironment parse(Environment environment) {
 
-		log.debug("parse -> (environment) {}", environment);
+		log.trace("parse -> (environment) {}", environment);
 		ExEnvironment exEnvironment = null;
 
 		if (null != environment) {

@@ -74,7 +74,7 @@ public class DurationParser {
 
 	public ExDuration parse(Duration duration) {
 
-		log.debug("parse -> (duration) {}", duration);
+		log.trace("parse -> (duration) {}", duration);
 		ExDuration exDuration = null;
 
 		if (null != duration) {

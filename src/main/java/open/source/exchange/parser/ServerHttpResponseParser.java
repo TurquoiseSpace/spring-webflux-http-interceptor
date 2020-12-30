@@ -48,7 +48,7 @@ public class ServerHttpResponseParser {
 
 	public ExServerHttpResponse parse(ServerHttpResponse serverHttpResponse) {
 
-		log.debug("parse -> (serverHttpResponse) {}", serverHttpResponse);
+		log.trace("parse -> (serverHttpResponse) {}", serverHttpResponse);
 		ExServerHttpResponse exServerHttpResponse = null;
 
 		if (null != serverHttpResponse) {

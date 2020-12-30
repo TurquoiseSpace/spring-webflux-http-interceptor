@@ -23,7 +23,7 @@ public class URLParser {
 
 	public ExURL parse(URL url) {
 
-		log.debug("parse -> (url) {}", url);
+		log.trace("parse -> (url) {}", url);
 		ExURL exURL = null;
 
 		if (null != url) {

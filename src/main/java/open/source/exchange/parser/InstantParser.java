@@ -21,7 +21,7 @@ public class InstantParser {
 
 	public ExInstant parse(Instant instant) {
 
-		log.debug("parse -> (instant) {}", instant);
+		log.trace("parse -> (instant) {}", instant);
 		ExInstant exInstant = null;
 
 		if (null != instant) {
