@@ -9,10 +9,33 @@
 
 	<groupId>com.github.turquoisespace</groupId>
 	<artifactId>spring-webflux-http-interceptor</artifactId>
-	<version>0.0.2</version>
+	<version>0.0.3</version>
 
 	<name>Spring Webflux HTTP Interceptor</name>
 	<description>Persist Module</description>
+	<url>https://github.com/TurquoiseSpace/spring-webflux-http-interceptor</url>
+
+	<licenses>
+		<license>
+			<name>The Apache Software License, Version 2.0</name>
+			<url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+		</license>
+	</licenses>
+
+	<developers>
+		<developer>
+			<name>Prakhar Makhija</name>
+			<email>matcdac@gmail.com</email>
+			<organization>Turquoise Space</organization>
+			<organizationUrl>https://github.com/matcdac</organizationUrl>
+		</developer>
+	</developers>
+
+	<scm>
+		<connection>scm:git:git://github.com/TurquoiseSpace/spring-webflux-http-interceptor.git</connection>
+		<developerConnection>scm:git:ssh://github.com:TurquoiseSpace/spring-webflux-http-interceptor.git</developerConnection>
+		<url>http://github.com/TurquoiseSpace/spring-webflux-http-interceptor/tree/master</url>
+	</scm>
 
 	<properties>
 		<lombok.version>1.18.10</lombok.version>
