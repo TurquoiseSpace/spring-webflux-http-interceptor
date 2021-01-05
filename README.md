@@ -30,6 +30,7 @@ Add jar (ant) or as dependency in pom.xml (maven), to your Java Spring WebFlux, 
 
 Add (class level) annotation to the java class which contains main() method of the Web Application
 
+	@SpringBootApplication(exclude = { DataSourceAutoConfiguration.class })
 	@ComponentScan(basePackages = { "open.source", "${application.base.package}" })
 	public class SpringWebFluxApplication { }
 
@@ -38,7 +39,7 @@ Add (class level) annotation to java bean configuration class of the MongoDB Con
 
 	@Configuration
 	@EnableMongoAuditing
-	@EnableReactiveMongoRepositories(value = { "open.source.exchange.repository.asynchronous", "${application.package.containing.asynchronous.repositories}" })
+	@EnableReactiveMongoRepositories(value = { "open.source.exchange.repository.asynchronous", "${application.asynchronous.repositories.package}" })
 	public class MongoReactiveConfig { }
 
 
