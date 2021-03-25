@@ -9,7 +9,7 @@
 
 	<groupId>com.github.TurquoiseSpace</groupId>
 	<artifactId>spring-webflux-http-interceptor</artifactId>
-	<version>0.0.7</version>
+	<version>0.0.8</version>
 
 	<name>Spring Webflux HTTP Interceptor</name>
 	<description>Persist Module</description>
@@ -41,6 +41,7 @@
 		<lombok.version>1.18.10</lombok.version>
 		<fasterxml.jackson.version>2.9.0</fasterxml.jackson.version>
 		<springframework.version>2.1.7.RELEASE</springframework.version>
+		<log4j.over.slf4j.version>1.7.30</log4j.over.slf4j.version>
 		<maven.compiler.plugin.version>3.8.1</maven.compiler.plugin.version>
 		<maven.compiler.source>1.8</maven.compiler.source>
 		<maven.compiler.target>1.8</maven.compiler.target>
@@ -72,6 +73,11 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-webflux</artifactId>
 			<version>${springframework.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>log4j-over-slf4j</artifactId>
+			<version>${log4j.over.slf4j.version}</version>
 		</dependency>
 	</dependencies>
 

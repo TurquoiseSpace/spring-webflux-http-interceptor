@@ -1,6 +1,6 @@
 package open.source.exchange.utility.asynchronous;
 
-import org.jboss.logging.MDC;
+import org.apache.log4j.MDC;
 
 import lombok.extern.log4j.Log4j2;
 import reactor.core.Disposable;
@@ -15,12 +15,21 @@ public class MonoCallSynchronousExecutor {
 
 		Object requestId = MDC.get("requestId");
 		String id = (null != requestId) ? (String) requestId : "";
+
 		Thread helperThread = new Thread() {
 
 			private void checkThresholdCrossed(int sleptTimes, long perodicCheckMilliSeconds) {
 
-				int sleptDurationInSeconds = (int) ((perodicCheckMilliSeconds * sleptTimes) / 1000);
-				if (sleptDurationInSeconds > 0 && 0 == sleptDurationInSeconds % THRESHOLD_SECONDS ) {
+				long sleptDurationInMilliSeconds = sleptTimes * perodicCheckMilliSeconds;
+				int sleptDurationInSeconds = (int) sleptDurationInMilliSeconds / 1000;
+
+				long milliSecondOffset = sleptDurationInMilliSeconds - (sleptDurationInSeconds * 1000);
+
+				boolean isSleptSecondsMultiplierOfThreshold = (0 == (sleptDurationInSeconds % THRESHOLD_SECONDS));
+				boolean isThresholdLimitReached = isSleptSecondsMultiplierOfThreshold
+						&& (0 == milliSecondOffset);
+
+				if (sleptDurationInSeconds > 0 && isThresholdLimitReached) {
 					log.warn("{} -> (disposed) {} (eachSleepMilliSecondDuration) {} (sleptTimes) {} (sleptDurationInSeconds) {}",
 							descriptor, false, perodicCheckMilliSeconds, sleptTimes, sleptDurationInSeconds);
 				} else {
@@ -49,6 +58,7 @@ public class MonoCallSynchronousExecutor {
 			}
 
 		};
+
 		helperThread.setName("ThreadHelper - " + descriptor);
 		return helperThread;
 	}
