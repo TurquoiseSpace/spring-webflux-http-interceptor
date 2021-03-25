@@ -6,6 +6,7 @@ import lombok.extern.log4j.Log4j2;
 import reactor.core.Disposable;
 import reactor.core.publisher.Mono;
 
+// https://projectlombok.org/features/log
 @Log4j2
 public class MonoCallSynchronousExecutor {
 
