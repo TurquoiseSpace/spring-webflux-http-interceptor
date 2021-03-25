@@ -5,15 +5,15 @@
 
 Plug & Play Module
 
-[![Maven Central](https://img.shields.io/maven-central/v/com.github.TurquoiseSpace/spring-webflux-http-interceptor.svg?label=Maven%20Central)](https://search.maven.org/search?q=g:%22com.github.TurquoiseSpace%22%20AND%20a:%22spring-webflux-http-interceptor%22)
+[![Maven Central](https://img.shields.io/maven-central/v/com.github.TurquoiseSpace/spring-webflux-http-interceptor.svg?label=Maven%20Central)](https://repo1.maven.org/maven2/com/github/TurquoiseSpace/spring-webflux-http-interceptor/)
 
-[![javadoc](https://javadoc.io/badge2/com.github.TurquoiseSpace/spring-webflux-http-interceptor/javadoc.svg)](https://javadoc.io/doc/com.github.TurquoiseSpace/spring-webflux-http-interceptor)
+[![Java Doc](https://javadoc.io/badge2/com.github.TurquoiseSpace/spring-webflux-http-interceptor/javadoc.svg)](https://javadoc.io/doc/com.github.TurquoiseSpace/spring-webflux-http-interceptor)
 
 [Sonatype](https://search.maven.org/artifact/com.github.TurquoiseSpace/spring-webflux-http-interceptor)
 
 [MVN Repository](https://mvnrepository.com/artifact/com.github.TurquoiseSpace/spring-webflux-http-interceptor)
 
-[Maven Central Repo FTP](https://repo1.maven.org/maven2/com/github/TurquoiseSpace/spring-webflux-http-interceptor/)
+[Maven Central Search](https://search.maven.org/search?q=g:%22com.github.TurquoiseSpace%22%20AND%20a:%22spring-webflux-http-interceptor%22)
 
 
 
@@ -34,7 +34,7 @@ Add jar (ant) or as dependency in pom.xml (maven), to your Java Spring WebFlux, 
 		<dependency>
 			<groupId>com.github.TurquoiseSpace</groupId>
 			<artifactId>spring-webflux-http-interceptor</artifactId>
-			<version>0.0.7</version>
+			<version>0.0.8</version>
 		</dependency>
 	</dependencies>
 
@@ -233,14 +233,14 @@ Sign
 
 	gpg -ab pom.xml
 
-	gpg -ab target/spring-webflux-http-interceptor-0.0.7.jar
+	gpg -ab target/spring-webflux-http-interceptor-0.0.8.jar
 
 
 Verify
 
 	gpg --verify pom.xml.asc
 
-	gpg --verify target/spring-webflux-http-interceptor-0.0.7.jar.asc
+	gpg --verify target/spring-webflux-http-interceptor-0.0.8.jar.asc
 
 
 
