@@ -34,7 +34,7 @@ Add jar (ant) or as dependency in pom.xml (maven), to your Java Spring WebFlux, 
 		<dependency>
 			<groupId>com.github.TurquoiseSpace</groupId>
 			<artifactId>spring-webflux-http-interceptor</artifactId>
-			<version>0.0.8</version>
+			<version>0.0.9</version>
 		</dependency>
 	</dependencies>
 

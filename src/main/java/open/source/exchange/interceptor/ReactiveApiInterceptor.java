@@ -1,7 +1,11 @@
 package open.source.exchange.interceptor;
 
+import java.util.Collection;
+import java.util.HashSet;
 import java.util.Map;
+import java.util.Set;
 import java.util.TreeMap;
+import java.util.stream.Collectors;
 
 import org.apache.log4j.MDC;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,6 +27,11 @@ import reactor.core.publisher.Mono;
 @RequiredArgsConstructor
 public class ReactiveApiInterceptor implements WebFilter {
 
+	/**
+	 * API Paths for which the mongo db entry should not be created
+	 */
+	private static final Set<String> EXCLUDE_API_PATHS = new HashSet<String>();
+
 	@Autowired
 	private InformationExchangeService informationExchangeService;
 
@@ -40,9 +49,26 @@ public class ReactiveApiInterceptor implements WebFilter {
 		// ServerHttpResponseParser -> ExServerHttpResponse
 	}
 
-	private String identifier(String id, long startTime) {
+	protected String identifier(String id, long startTime) {
 
 		return id + "-" + startTime;
+	}
+
+	protected static void addApiPathToExcludeFromBeingPersisted(String apiPath) {
+
+		EXCLUDE_API_PATHS.add(apiPath);
+	}
+
+	protected static void addApiPathsToExcludeFromBeingPersisted(Collection<String> apiPaths) {
+
+		EXCLUDE_API_PATHS.addAll(apiPaths);
+	}
+
+	protected static Set<String> getPathsToExcludeFromBeingPersisted() {
+
+		return EXCLUDE_API_PATHS.stream()
+			.map(string -> new String(string))
+			.collect(Collectors.toSet());
 	}
 
 	private Map<TimeEvent, Time<Long>> buildEvents(long startTimestamp, long endTimestamp, long totalTime) {
@@ -67,13 +93,20 @@ public class ReactiveApiInterceptor implements WebFilter {
 		long startTimestamp = System.currentTimeMillis();
 		// to get the nano timeframe precision computation, use value of System.nanoTime()
 		long nanoFrameStart = System.nanoTime();
-		log.info("request interceptor -> (requestId) {} (startTimestamp) {} (nanosFrameStart) {}",
-				requestId, startTimestamp, nanoFrameStart);
+
+		String apiUriPath = serverWebExchange.getRequest().getPath().value();
+		boolean persistFlag = !EXCLUDE_API_PATHS.contains(apiUriPath);
+
+		log.info("request interceptor -> (requestId) {} (startTimestamp) {} (nanosFrameStart) {} (apiUriPath) {} (persistFlag) {}",
+				requestId, startTimestamp, nanoFrameStart, apiUriPath, persistFlag);
 
 		String identifier = identifier(requestId, startTimestamp);
 		MDC.put("identifier", identifier);
 
-		informationExchangeService.onEntry(startTimestamp, serverWebExchange, identifier);
+		if (persistFlag) {
+			informationExchangeService.onEntry(startTimestamp, serverWebExchange, identifier);
+		}
+
 		return webFilterChain.filter(serverWebExchange)
 			.doFinally(signalType -> {
 
@@ -83,9 +116,10 @@ public class ReactiveApiInterceptor implements WebFilter {
 				log.info("response interceptor -> (requestId) {} (endTimestamp) {} (nanoFrameEnd) {} (signalType) {} (totalTime) {} nano seconds",
 						requestId, endTimestamp, nanoFrameEnd, signalType, totalTime);
 
-				Map<TimeEvent, Time<Long>> events = buildEvents(startTimestamp, endTimestamp, totalTime);
-
-				informationExchangeService.onExit(signalType, serverWebExchange, identifier, events);
+				if (persistFlag) {
+					Map<TimeEvent, Time<Long>> events = buildEvents(startTimestamp, endTimestamp, totalTime);
+					informationExchangeService.onExit(signalType, serverWebExchange, identifier, events);
+				}
 			});
 	}
 
