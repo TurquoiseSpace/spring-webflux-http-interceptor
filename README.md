@@ -233,14 +233,14 @@ Sign
 
 	gpg -ab pom.xml
 
-	gpg -ab target/spring-webflux-http-interceptor-0.0.8.jar
+	gpg -ab target/spring-webflux-http-interceptor-0.0.9.jar
 
 
 Verify
 
 	gpg --verify pom.xml.asc
 
-	gpg --verify target/spring-webflux-http-interceptor-0.0.8.jar.asc
+	gpg --verify target/spring-webflux-http-interceptor-0.0.9.jar.asc
 
 
 
