@@ -9,6 +9,11 @@ Plug & Play Module
 
 [![Java Doc](https://javadoc.io/badge2/com.github.TurquoiseSpace/spring-webflux-http-interceptor/javadoc.svg)](https://javadoc.io/doc/com.github.TurquoiseSpace/spring-webflux-http-interceptor)
 
+[![GitHub (All Releases)](https://img.shields.io/github/downloads/TurquoiseSpace/spring-webflux-http-interceptor/total?color=blue)](https://repo1.maven.org/maven2/com/github/TurquoiseSpace/spring-webflux-http-interceptor/)
+
+[![GitHub (Latest Release)](https://img.shields.io/github/downloads/TurquoiseSpace/spring-webflux-http-interceptor/0.0.9/total)](https://repo1.maven.org/maven2/com/github/TurquoiseSpace/spring-webflux-http-interceptor/0.0.9/)
+
+
 [Sonatype](https://search.maven.org/artifact/com.github.TurquoiseSpace/spring-webflux-http-interceptor)
 
 [MVN Repository](https://mvnrepository.com/artifact/com.github.TurquoiseSpace/spring-webflux-http-interceptor)
